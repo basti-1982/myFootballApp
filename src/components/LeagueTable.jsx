@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { fetchLeagueTable } from '../api';   // Importiere die Funktion aus api.js
+import { fetchLeagueTable } from '../api';   
 
 export default function LeagueTable({ leagueId }) {
   const [table, setTable] = useState([]);
@@ -11,7 +11,7 @@ export default function LeagueTable({ leagueId }) {
     const fetchTable = async () => {
       setLoading(true);
       try {
-        const data = await fetchLeagueTable(leagueId);  // Verwende die fetch-Funktion aus api.js
+        const data = await fetchLeagueTable(leagueId);  
         if (data.standings && data.standings.length > 0) {
           setTable(data.standings[0].table);
         }

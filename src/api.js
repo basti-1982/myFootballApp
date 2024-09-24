@@ -1,4 +1,3 @@
-// api.js
 import { API_KEY } from './config';
 
 export const fetchLeagueTable = async (leagueId) => {

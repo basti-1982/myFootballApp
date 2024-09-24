@@ -21,3 +21,4 @@ export default function LeagueSelector({ onSelect }) {
     </div>
   );
 }
+
