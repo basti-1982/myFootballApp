@@ -2,7 +2,7 @@ import { API_KEY } from './config';
 
 export const fetchLeagueTable = async (leagueId) => {
   try {
-    const response = await fetch(`https://api.football-data.org/v4/competitions/${leagueId}/standings`, {
+    const response = await fetch(`/api/v4/competitions/${leagueId}/standings`, {
       method: 'GET',
       headers: {
         'X-Auth-Token': API_KEY,
