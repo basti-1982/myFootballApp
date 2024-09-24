@@ -2,6 +2,8 @@
 html, body, #root {
   height: 100%;
   margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Verhindert horizontales Scrollen */
 }
 
 body {
@@ -9,6 +11,12 @@ body {
   background-size: cover;
   background-position: center;
   display: flex;
-  justify-content: center;
-  align-items: flex-start; /* Stellt sicher, dass der Inhalt nicht verdeckt wird */
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Stellt sicher, dass #root die volle Höhe des Bildschirms einnimmt */
 }

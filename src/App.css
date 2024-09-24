@@ -2,11 +2,21 @@
 .App {
   text-align: center;
   font-family: Arial, sans-serif;
-  padding-top: 140px; /* Platz für den festen Header erweitert */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; 
+  padding-top: 140px; 
+}
+
+.content {
+  flex: 1; 
 }
 
 .league-selector {
-  margin-top: 20px; /* Verschiebt die Ligaauswahl weiter nach oben */
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .league-buttons {
@@ -32,23 +42,45 @@
 }
 
 .back-button {
-  margin-bottom: 20px;
-  background-color: #f44336;
+  position: fixed;
+  top: 150px;
+  left: 20px;
+  background-color: #007bff;
   color: white;
   border: none;
-  padding: 10px 20px;
+  padding: 15px 20px;
+  font-size: 16px;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 50px;
+  transition: background-color 0.3s, transform 0.3s;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  z-index: 1001;
 }
 
 .back-button:hover {
-  background-color: #d32f2f;
+  background-color: #0056b3;
+  transform: translateY(-2px);
 }
 
+.table-container {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 140px); 
+  overflow-y: auto;
+}
+
+.table-wrapper {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+/* Tabelle selbst */
 table {
   margin: 0 auto;
-  border-collapse: collapse;
-  width: 80%;
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+  max-width: 1200px;
   margin-top: 20px;
   background-color: #f2f2f2;
   margin-bottom: 50px;

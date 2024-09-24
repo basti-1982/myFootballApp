@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { fetchLeagueTable } from '../api';
+import { useEffect, useState } from "react";
+import { fetchLeagueTable } from "../api";
 
 export default function LeagueTable({ leagueId }) {
   const [table, setTable] = useState([]);
@@ -32,34 +32,44 @@ export default function LeagueTable({ leagueId }) {
   if (!table.length) return <p>No data available for this league.</p>;
 
   return (
-    <div>
-      <table>
-        <thead>
-          <tr>
-            <th>Position</th>
-            <th>Team</th>
-            <th>Points</th>
-            <th>Goal Difference</th>
-          </tr>
-        </thead>
-        <tbody>
-          {table.map((team) => (
-            <tr key={team.team.id}>
-              <td>{team.position}</td>
-              <td>
-                <img
-                  src={team.team.crest}
-                  alt={team.team.name}
-                  style={{ width: '30px', height: '30px', marginRight: '10px' }}
-                />
-                {team.team.name}
-              </td>
-              <td>{team.points}</td>
-              <td>{team.goalDifference}</td>
+    <div className="table-container">
+      <div className="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Position</th>
+              <th>Team</th>
+              <th>Points</th>
+              <th>Goals</th> {/* Eine Spalte für Tore */}
+              <th>Goal Diff.</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {table.map((team) => (
+              <tr key={team.team.id}>
+                <td>{team.position}</td>
+                <td style={{ display: 'flex', alignItems: 'center' }}>
+                  <img
+                    src={team.team.crest}
+                    alt={team.team.name}
+                    style={{
+                      width: "30px",
+                      height: "30px",
+                      marginRight: "10px",
+                    }}
+                  />
+                  <span>{team.team.name}</span>
+                </td>
+                <td>{team.points}</td>
+                <td>
+                  {team.goalsFor}:{team.goalsAgainst} 
+                </td>
+                <td>{team.goalDifference}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

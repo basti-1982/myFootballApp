@@ -9,7 +9,7 @@ export default function LeagueSelector({ onSelect }) {
 
   return (
     <div>
-      <h2>Select a League</h2>
+      <h1>Select a League</h1>
       <select onChange={(e) => onSelect(e.target.value)}>
         <option value="">--Select a League--</option>
         {leagues.map((league) => (

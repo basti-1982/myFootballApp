@@ -1,23 +1,24 @@
+// App.jsx
 import { useState } from 'react';
 import LeagueTable from './components/LeagueTable';
 import Header from './components/Header';
+import Footer from './components/Footer'; 
 import './App.css';
 
 function App() {
   const [selectedLeague, setSelectedLeague] = useState(null);
 
   const leagues = [
-    { id: 2002, name: 'Bundesliga' },
-    { id: 2021, name: 'Premier League' },
-    { id: 2015, name: 'Ligue 1' },
-    { id: 2014, name: 'La Liga' },
-    { id: 2019, name: 'Serie A' },
+    { id: 2002, name: 'Bundesliga' }, 
+    { id: 2021, name: 'Premier League' }, 
+    { id: 2015, name: 'Ligue 1' }, 
+    { id: 2014, name: 'La Liga' }, 
+    { id: 2019, name: 'Serie A' }, 
   ];
 
   return (
     <div className="App">
-      {/* Header mit dynamischer Liganame-Anzeige */}
-      <Header selectedLeagueName={selectedLeague?.name} />
+      <Header selectedLeagueName={selectedLeague ? selectedLeague.name : null} />
 
       {!selectedLeague ? (
         <div className="league-selector">
@@ -43,6 +44,8 @@ function App() {
           <LeagueTable leagueId={selectedLeague.id} />
         </div>
       )}
+
+      <Footer /> 
     </div>
   );
 }
