@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { fetchLeagueTable } from '../api';   
+import { fetchLeagueTable } from '../api';
 
 export default function LeagueTable({ leagueId }) {
   const [table, setTable] = useState([]);
@@ -11,7 +11,7 @@ export default function LeagueTable({ leagueId }) {
     const fetchTable = async () => {
       setLoading(true);
       try {
-        const data = await fetchLeagueTable(leagueId);  
+        const data = await fetchLeagueTable(leagueId);
         if (data.standings && data.standings.length > 0) {
           setTable(data.standings[0].table);
         }
@@ -33,21 +33,29 @@ export default function LeagueTable({ leagueId }) {
 
   return (
     <div>
-      <h2>League Table</h2>
       <table>
         <thead>
           <tr>
             <th>Position</th>
             <th>Team</th>
             <th>Points</th>
+            <th>Goal Difference</th>
           </tr>
         </thead>
         <tbody>
           {table.map((team) => (
             <tr key={team.team.id}>
               <td>{team.position}</td>
-              <td>{team.team.name}</td>
+              <td>
+                <img
+                  src={team.team.crest}
+                  alt={team.team.name}
+                  style={{ width: '30px', height: '30px', marginRight: '10px' }}
+                />
+                {team.team.name}
+              </td>
               <td>{team.points}</td>
+              <td>{team.goalDifference}</td>
             </tr>
           ))}
         </tbody>
