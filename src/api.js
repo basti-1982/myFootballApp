@@ -22,17 +22,19 @@ import { API_KEY } from './config';
 // };
 
 export const fetchLeagueTable = async (leagueId) => {
+  const url = `https://api.football-data.org/v4/competitions/${leagueId}/standings`;
+  console.log(`Fetching standings from: ${url}`);
+  
   try {
-    console.log(`Fetching standings for league ID: ${leagueId}`);
-    const response = await fetch(`/api/v4/competitions/${leagueId}/standings`, {
+    const response = await fetch(url, {
       method: 'GET',
       headers: {
         'X-Auth-Token': API_KEY,
       },
     });
-    console.log(`Response Status: ${response.status}`);
-    
+
     if (!response.ok) {
+      console.error(`Response Status: ${response.status} ${response.statusText}`);
       throw new Error('Failed to fetch league table');
     }
 
@@ -43,4 +45,3 @@ export const fetchLeagueTable = async (leagueId) => {
     throw error;
   }
 };
-
