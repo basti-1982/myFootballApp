@@ -1,9 +1,6 @@
-import { API_KEY } from './config';
-
-
-const express = require('express');
-const fetch = require('node-fetch');
-const cors = require('cors');
+import express from 'express';
+import fetch from 'node-fetch';
+import cors from 'cors';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -13,12 +10,12 @@ app.use(cors());
 app.get('/api/v4/competitions/:leagueId/standings', async (req, res) => {
     const { leagueId } = req.params;
     const url = `https://api.football-data.org/v4/competitions/${leagueId}/standings`;
-    
+
     try {
         const response = await fetch(url, {
             method: 'GET',
             headers: {
-                'X-Auth-Token': API_KEY, // Füge deinen API-Schlüssel hier hinzu
+                'X-Auth-Token': "5d8948f46b674ff7a4d143618e325592",
             },
         });
 
