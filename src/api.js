@@ -30,12 +30,10 @@ export const fetchLeagueTable = async (leagueId) => {
         'X-Auth-Token': API_KEY,
       },
     });
-
-    console.log('Response Status:', response.status);
+    console.log(`Response Status: ${response.status}`);
     
     if (!response.ok) {
-      const errorDetails = await response.text(); 
-      throw new Error(`Failed to fetch league table: ${errorDetails}`);
+      throw new Error('Failed to fetch league table');
     }
 
     const data = await response.json();
@@ -45,3 +43,4 @@ export const fetchLeagueTable = async (leagueId) => {
     throw error;
   }
 };
+
